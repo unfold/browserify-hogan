@@ -1,0 +1,21 @@
+{
+  "name": "browserify-hogan",
+  "description": "Browserify transform plugin for Hogan.js templates",
+  "author": "Simen Brekken <simen@unfold.no>",
+  "keywords": [
+    "browserify",
+    "hogan",
+    "mustache",
+    "transform"
+  ],
+  "version": "0.0.1",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unfold/browserify-hogan"
+  },
+  "dependencies": {
+    "through": "~2.2.7",
+    "hogan.js": "~2.0.0"
+  }
+}
