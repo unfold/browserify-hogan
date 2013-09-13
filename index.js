@@ -4,7 +4,7 @@ var hogan = require('hogan.js'),
 var filenamePattern = /\.(html|hogan|hg)$/
 
 var wrap = function(template) {
-    return 'module.exports=(function() {var t = ' + template + '; return function(l) { return t(l) }}())'
+    return 'module.exports=(function() {var Hogan = require(\'hogan.js\');var template = new Hogan.Template(' + template + ');return function(data) {return template.render(data)}}());'
 }
 
 module.exports = function(file) {
