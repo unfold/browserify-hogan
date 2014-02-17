@@ -4,10 +4,14 @@
 
 ## Usage
 
-In module `foo.js` require your html template:
+Give your template an extension of `.ms`, `.mustach`, `.hogan`, `.hg`, or `.html`.
 
-    var template = require('./template.html')
-    var html = template({foo: 'bar'})
+In module `foo.js` require your template:
+
+```javascript
+    var template = require('./template.ms');
+    var html = template.render({foo: 'bar'});
+```
 
 Then browserify your module with the transform plugin:
 
