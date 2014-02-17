@@ -3,19 +3,19 @@ var hogan = require('hogan.js'),
 
 var filenamePattern = /\.(html|hogan|hg|mustache|ms)$/
 
-var wrap = function(template) {
-    return 'module.exports=(function() {var Template = require(\'hogan.js/lib/template\').Template;var template = new Template(' + template + ');return function(data) {return template.render(data)}}());'
+var wrap = function (template) {
+    return 'module.exports = new (require(\'hogan.js/lib/template\').Template)(' + template + ');'
 }
 
-module.exports = function(file) {
-    if (!filenamePattern.test(file)) return through()
+module.exports = function (file) {
+    if (!filenamePattern.test(file)) return through();
 
     var input = ''
-    var write = function(buffer) {
+    var write = function (buffer) {
         input += buffer
     }
 
-    var end = function() {
+    var end = function () {
         this.queue(wrap(hogan.compile(input, {asString: true})))
         this.queue(null)
     }

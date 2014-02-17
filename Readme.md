@@ -1,13 +1,17 @@
-# Browserify Hogan.JS
+# browserify-hogan [![Build Status](https://secure.travis-ci.org/unfold/browserify-hogan.png?branch=master)](http://travis-ci.org/unfold/browserify-hogan)
 
 [browserify](https://github.com/substack/node-browserify) transform plugin for [Hogan.js](http://twitter.github.io/hogan.js) templates
 
 ## Usage
 
-In module `foo.js` require your html template:
+Give your template an extension of `.ms`, `.mustach`, `.hogan`, `.hg`, or `.html`.
 
-    var template = require('./template.html')
-    var html = template({foo: 'bar'})
+In module `foo.js` require your template:
+
+```javascript
+    var template = require('./template.ms');
+    var html = template.render({foo: 'bar'});
+```
 
 Then browserify your module with the transform plugin:
 
