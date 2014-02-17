@@ -1,4 +1,4 @@
-# Browserify Hogan.JS
+# browserify-hogan [![Build Status](https://secure.travis-ci.org/unfold/browserify-hogan.png?branch=master)](http://travis-ci.org/unfold/browserify-hogan)
 
 [browserify](https://github.com/substack/node-browserify) transform plugin for [Hogan.js](http://twitter.github.io/hogan.js) templates
 
