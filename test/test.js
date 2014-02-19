@@ -7,7 +7,11 @@ var browserifyHogan = path.resolve(__dirname, '../index'),
     browserifyBin = path.resolve(__dirname, '../node_modules/.bin/browserify'),
     command = browserifyBin + ' -t "' + browserifyHogan + '" "' + entryPoint + '" | node';
 
+console.log('Testing with command:', command);
+
 exec(command, function (err, stdout, stderr) {
     assert(!err && !stderr, 'No errors in Browserify or when executing bundle');
     assert.strictEqual(stdout.trim(), 'Hello Dave!', 'Template renders correctly');
+
+    console.log('Test complete.');
 });
