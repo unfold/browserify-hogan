@@ -4,7 +4,7 @@
 
 ## Usage
 
-Give your template an extension of `.ms`, `.mustach`, `.hogan`, `.hg`, or `.html`.
+Give your template an extension of `.ms`, `.mustache`, `.hogan`, `.hg`, or `.html`.
 
 In module `foo.js` require your template:
 
