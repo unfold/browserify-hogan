@@ -1,1 +1,1 @@
-Hello {{ name }}!
+Hello {{ name }}! Here is {{> foo }}.

@@ -1,2 +1,3 @@
-var render = require('./template.ms').render;
-console.log(render({name: 'Dave'}));
+console.log(
+  require('./template.ms').render({name: 'Dave'}, {foo: require('./foo.ms')})
+);

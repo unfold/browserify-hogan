@@ -1,0 +1,1 @@
+some text from a partial, {{ name }}

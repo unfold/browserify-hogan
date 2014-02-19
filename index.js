@@ -5,11 +5,13 @@ var filenamePattern = /\.(html|hogan|hg|mustache|ms)$/
 
 var wrap = function (template) {
     return (
-        'var template = new (require(\'hogan.js/lib/template\')).Template(' + template + ');' +
+        'var t = new (require(\'hogan.js/lib/template\')).Template(' + template + ');' +
         'module.exports = {' +
-        '  render: function () { return template.render.apply(template, arguments); }' +
+        '  render: function () { return t.render.apply(t, arguments); },' +
+        '  r: function () { return t.r.apply(t, arguments); },' +
+        '  ri: function () { return t.ri.apply(t, arguments); }' +
         '};'
-    );
+    )
 }
 
 module.exports = function (file) {

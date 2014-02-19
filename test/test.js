@@ -11,7 +11,7 @@ console.log('Testing with command:', command);
 
 exec(command, function (err, stdout, stderr) {
     assert(!err && !stderr, 'No errors in Browserify or when executing bundle');
-    assert.strictEqual(stdout.trim(), 'Hello Dave!', 'Template renders correctly');
+    assert.strictEqual(stdout.trim(), 'Hello Dave! Here is some text from a partial, Dave.');
 
     console.log('Test complete.');
 });
