@@ -19,7 +19,8 @@
   },
   "dependencies": {
     "through": "~2.2.7",
-    "hogan.js": "~2.0.0"
+    "hogan.js": "~2.0.0",
+    "html-minifier": "~0.5.6"
   },
   "devDependencies": {
     "browserify": "~3.30.1"

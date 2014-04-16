@@ -1,1 +1,1 @@
-some text from a partial, {{ name }}
+     <span             class="bar">some text from a partial, {{ name }}</span>
