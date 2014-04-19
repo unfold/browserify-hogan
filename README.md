@@ -8,18 +8,22 @@ Give your template an extension of `.ms`, `.mustache`, `.hogan`, `.hg`, or `.htm
 
 In module `foo.js` require your template:
 
-```javascript
-    var template = require('./template.ms');
-    var html = template.render({foo: 'bar'});
+```js
+var template = require('./template.ms');
+var html = template.render({foo: 'bar'});
 ```
 
 Then browserify your module with the transform plugin:
 
-    $ browserify --transform browserify-hogan foo.js
+```sh
+browserify --transform browserify-hogan foo.js
+```
 
 ## Installation
 
-  $ npm install browserify-hogan
+```sh
+npm install hogan.js browserify-hogan --save
+```
 
 ## License
 
