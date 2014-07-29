@@ -1,6 +1,6 @@
 # browserify-hogan [![Build Status](https://secure.travis-ci.org/unfold/browserify-hogan.png?branch=master)](http://travis-ci.org/unfold/browserify-hogan)
 
-[browserify](https://github.com/substack/node-browserify) transform plugin for [Hogan.js](http://twitter.github.io/hogan.js) templates
+[browserify](https://github.com/substack/node-browserify) transform plugin for [Hogan.js](http://twitter.github.io/hogan.js) templates.
 
 ## Usage
 
@@ -16,6 +16,14 @@ In module `foo.js` require your template:
 Then browserify your module with the transform plugin:
 
     $ browserify --transform browserify-hogan foo.js
+
+
+### Options
+
+- `minify` (default: `false`) – set this to use [html-minifier](https://github.com/kangax/html-minifier) on your templates first
+
+See the [browserify readme](https://github.com/substack/node-browserify) for how to use transform options.
+
 
 ## Installation
 
