@@ -16,9 +16,21 @@ var minifierDefaults = {
     removeEmptyElements          : false
 };
 
-function wrap (template) {
+function wrap (template, input, enableLambdas) {
+    var prefix;
+    if (enableLambdas) {
+        prefix = (
+            'var H = require(\'hogan.js\'); var T = H.Template;' +
+            'var t = new T(' + template + ',' + JSON.stringify(input) + ',H,{});'
+        );
+    } else {
+        prefix = (
+            'var t = new (require(\'hogan.js/lib/template\')).Template(' + template + ');'
+        );
+    }
+
     return (
-        'var t = new (require(\'hogan.js/lib/template\')).Template(' + template + ');' +
+        prefix +
         'module.exports = {' +
         '  render: function () { return t.render.apply(t, arguments); },' +
         '  r: function () { return t.r.apply(t, arguments); },' +
@@ -43,7 +55,6 @@ module.exports = function (file, opts) {
     if (!filenamePattern.test(file)) return through();
 
     opts = opts || {};
-    var minifierOpts = extend({}, minifierDefaults, opts.minifierOpts);
 
     var input = '';
     var write = function (buffer) {
@@ -51,7 +62,11 @@ module.exports = function (file, opts) {
     }
 
     var end = function () {
-        this.queue(wrap(hogan.compile(minify(input, minifierOpts), { asString: true })));
+        if (opts.minify) {
+            var minifierOpts = extend({}, minifierDefaults, opts.minifierOpts);
+            input = minify(input, minifierOpts);
+        }
+        this.queue(wrap(hogan.compile(input, { asString: true }), input, opts.enableLambdas));
         this.queue(null);
     }
 

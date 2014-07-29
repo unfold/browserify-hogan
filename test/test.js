@@ -2,16 +2,35 @@ var exec = require('child_process').exec,
     path = require('path'),
     assert = require('assert');
 
-var browserifyHogan = path.resolve(__dirname, '../index'),
-    entryPoint = path.join(__dirname, 'fixtures', 'main.js'),
-    browserifyBin = path.resolve(__dirname, '../node_modules/.bin/browserify'),
-    command = browserifyBin + ' -t "' + browserifyHogan + '" "' + entryPoint + '" | node';
+var browserifyHogan = path.resolve(__dirname, '../index');
+    browserifyBin = path.resolve(__dirname, '../node_modules/.bin/browserify');
 
-console.log('Testing with command:', command);
+// Test: minify
+(function minify() {
+  var entryPoint = path.join(__dirname, 'fixtures', 'minify.js'),
+      command = browserifyBin + ' -t [ "' + browserifyHogan + '" --minify ] "' + entryPoint + '" | node';
 
-exec(command, function (err, stdout, stderr) {
-    assert(!err && !stderr, 'No errors in Browserify or when executing bundle');
-    assert.strictEqual(stdout.trim(), 'Hello Dave! Here is <span class=bar>some text from a partial, Dave</span>.');
+  console.log('Testing minify:', command);
 
-    console.log('Test complete.');
-});
+  exec(command, function (err, stdout, stderr) {
+      assert(!err && !stderr, 'No errors in Browserify or when executing bundle');
+      assert.strictEqual(stdout.trim(), 'Hello Dave! Here is <span class=bar>some text from a partial, Dave</span>.');
+
+      console.log('minify: ✓');
+  });
+})();
+
+// Test: lambdas
+(function lambdas() {
+  var entryPoint = path.join(__dirname, 'fixtures', 'lambdas.js'),
+      command = browserifyBin + ' -t [ "' + browserifyHogan + '" --enableLambdas ] "' + entryPoint + '" | node';
+
+  console.log('Testing lambdas:', command);
+
+  exec(command, function (err, stdout, stderr) {
+      assert(!err && !stderr, 'No errors in Browserify or when executing bundle');
+      assert.strictEqual(stdout.trim(), '<abbr title="Jess" />');
+
+      console.log('lambdas: ✓');
+  });
+})();

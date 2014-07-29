@@ -1,0 +1,1 @@
+<abbr {{#attr}}title{{/attr}} />
